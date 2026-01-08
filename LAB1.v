@@ -4,7 +4,7 @@ module Dem (
     input rst,
     input load,
     input [2:0] in_data,
-    output [2:0] out_data
+    output reg [2:0] out_data
 );
 
     reg [2:0] current_state;
