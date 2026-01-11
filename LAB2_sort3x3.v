@@ -1,6 +1,6 @@
 module compare_swap (
     input [7:0] a, b,
-    output reg [7:0] min,max;
+    output reg [7:0] min,max
 );
 always @(*) begin
     if (a < b) begin
@@ -14,10 +14,10 @@ end
 endmodule
 
 module sort3 (
-    input [7:0] a, b, c
-    output [7:0] max, med, min;
+    input [7:0] a, b, c,
+    output [7:0] max, med, min
 ); 
-    wire [7:0] l1, l2, h1, h2;
+    wire [7:0] l1, h1, h2;
     //so sanh a, b
     compare_swap c1 ( .a(a), .b(b), .min(l1), .max(h1));
     //so sanh min voi c
