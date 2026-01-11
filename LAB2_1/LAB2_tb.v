@@ -23,7 +23,7 @@ module tb_image_filter;
     integer ptr;
     integer i;
 
-    // --- GỌI MODULE TOP (Đảm bảo file TOP của bạn đã dùng assign valid_out) ---
+    // --- GỌI MODULE TOP ---
     top #( .W(WIDTH), .H(HEIGHT) ) uut (
         .clk(clk),
         .rst(rst),
@@ -73,7 +73,7 @@ module tb_image_filter;
         end
     end
 
-    // --- MAIN (LOGIC MỚI: DÙNG WAIT) ---
+    // --- MAIN ---
     initial begin
         $display("Loading input...");
         $readmemh("pic_input.txt", mem_in); 
