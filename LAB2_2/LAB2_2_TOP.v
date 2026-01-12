@@ -4,7 +4,7 @@ module rgb2gray (
     input [7:0] R,
     input [7:0] G,
     input [7:0] B,
-    input [7:0] brightness, // Chỉnh độ sáng (cộng thêm)
+    input [7:0] brightness, // Do sang 
 
     output reg [7:0] gray_out,
     output reg valid_out
@@ -12,7 +12,7 @@ module rgb2gray (
 
     reg [15:0] mult_r, mult_g, mult_b;
     reg [15:0] sum_gray;
-    reg [8:0]  temp_bright; // 9 bit để check tràn 255
+    reg [8:0]  temp_bright; 
 
     always @(posedge clk or negedge rst) begin
         if (!rst) begin
@@ -23,17 +23,17 @@ module rgb2gray (
             temp_bright <= 0;
         end else begin
             // Y = 0.299*R + 0.587*G + 0.114*B
-            // Nhân với 256: 77, 150, 29
+            // Nhan voi 256: 77, 150, 29
             mult_r <= R * 77;
             mult_g <= G * 150;
             mult_b <= B * 29;
 
             sum_gray <= (mult_r + mult_g + mult_b);
 
-            // chia 256 bằng cach lấy 8 bit cao + chỉnh độ sáng
+            //chia 256 = lay 8 bit cao + do sang
             temp_bright = sum_gray[15:8] + brightness;
 
-            // Nếu kết quả > 255 thì giữ mức 255
+            // Neu ket qua lon hon 255 giu nguuyen
             if (temp_bright[8] == 1) 
                 gray_out <= 255; 
             else 
@@ -44,3 +44,4 @@ module rgb2gray (
     end
 
 endmodule
+
